@@ -18,8 +18,8 @@ module "subnets" {
   secondary_ranges = var.secondary_ranges
 }
 
-resource "google_service_account" "dh-serviceaccount" {
-  account_id   = "dh-serviceaccount"
+resource "google_service_account" "dh" {
+  account_id   = "dh"
   display_name = "DH Service Account"
 }
 
@@ -58,7 +58,7 @@ resource "google_compute_instance" "dh-datapipeline" {
 
   service_account {
     # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
-    email  = google_service_account.default.email
+    email  = google_service_account.dh.email
     scopes = ["cloud-platform"]
   }
 }

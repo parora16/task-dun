@@ -28,6 +28,7 @@ resource "google_compute_instance" "dh-datapipeline" {
   name         = "dh-datapipeline"
   machine_type = "e2-medium"
   zone         = "us-west1-a"
+  project      =  var.project_id
 
   tags = ["dh"]
 

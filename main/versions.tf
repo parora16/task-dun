@@ -10,3 +10,4 @@ terraform {
       version = "< 5.0, >= 3.45"
     }
   }
+}

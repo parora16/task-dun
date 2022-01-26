@@ -23,11 +23,6 @@ output "network_self_link" {
   description = "The URI of the VPC being created"
 }
 
-output "project_id" {
-  value       = module.vpc.project_id
-  description = "VPC project id"
-}
-
 output "subnets_names" {
   value       = [for network in module.subnets.subnets : network.name]
   description = "The names of the subnets being created"

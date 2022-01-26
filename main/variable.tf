@@ -1,9 +1,11 @@
 variable "project_id" {
   description = "The ID of the project where this VPC will be created"
+  default     = "triple-team-237804"
 }
 
 variable "network_name" {
   description = "The name of the network being created"
+  default     = "dunnhumby-vpc"
 }
 
 variable "auto_create_subnetworks" {
@@ -21,6 +23,13 @@ variable "description" {
 variable "subnets" {
   type        = list(map(string))
   description = "The list of subnets being created"
+  default     = [
+        {
+            subnet_name           = "dunnhumby-subnet"
+            subnet_ip             = "10.10.10.0/24"
+            subnet_region         = "us-west1"
+        }
+]
 }
 
 variable "secondary_ranges" {

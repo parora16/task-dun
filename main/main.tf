@@ -44,7 +44,9 @@ resource "google_compute_instance" "dh-datapipeline" {
   }
 
   network_interface {
-    subnetwork = "dunnhumby-subnet"
+    network            = module.vpc.network_name
+    subnetwork         = "dunnhumby-subnet"
+    subnetwork_project = var.project_id
   }
 
   metadata = {

@@ -45,10 +45,6 @@ resource "google_compute_instance" "dh-datapipeline" {
 
   network_interface {
     network    = module.vpc.network_name
-
-    access_config {
-      // Ephemeral public IP
-    }
   }
 
   metadata = {

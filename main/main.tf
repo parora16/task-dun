@@ -18,12 +18,12 @@ module "subnets" {
   secondary_ranges = var.secondary_ranges
 }
 
-resource "google_service_account" "default" {
+resource "google_service_account" "dh-serviceaccount" {
   account_id   = "dh-serviceaccount"
   display_name = "DH Service Account"
 }
 
-resource "google_compute_instance" "default" {
+resource "google_compute_instance" "dh-datapipeline" {
   name         = "dh-datapipeline"
   machine_type = "e2-medium"
   zone         = "us-west1-a"

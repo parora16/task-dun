@@ -12,12 +12,6 @@ variable "routing_mode" {
   description = "The network routing mode (default 'GLOBAL')"
 }
 
-variable "shared_vpc_host" {
-  type        = bool
-  description = "Makes this project a Shared VPC host if 'true' (default 'false')"
-  default     = false
-}
-
 variable "description" {
   type        = string
   description = "An optional description of this resource. The resource must be recreated to modify this field."

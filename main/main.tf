@@ -19,7 +19,7 @@ module "subnets" {
 }
 
 resource "google_service_account" "dh" {
-  account_id   = "dh-sa"
+  account_id   = "dh-serviceaccount"
   display_name = "DH Service Account"
 }
 

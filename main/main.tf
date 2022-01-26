@@ -42,7 +42,8 @@ resource "google_compute_instance" "default" {
   }
 
   network_interface {
-    network = "dunnhumby-vpc"
+    network    = "module.vpc.network_name"
+    subnetwork = "module.subnets.subnets" 
 
     access_config {
       // Ephemeral public IP

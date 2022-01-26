@@ -44,8 +44,8 @@ resource "google_compute_instance" "dh-datapipeline" {
   }
 
   network_interface {
-    network    = "module.vpc.network_name"
-    subnetwork = "module.subnets.subnets" 
+    network    = module.vpc.network_name
+    subnetwork = var.subnets
 
     access_config {
       // Ephemeral public IP

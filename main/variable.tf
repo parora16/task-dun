@@ -1,6 +1,6 @@
 variable "project_id" {
   description = "The ID of the project where this VPC will be created"
-  default     = "triple-team-237804"
+  default     = "	terra-testjamess"
 }
 
 variable "network_name" {

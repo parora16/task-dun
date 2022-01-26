@@ -39,9 +39,9 @@ resource "google_compute_instance" "dh-datapipeline" {
   }
 
   // Local SSD disk
-  scratch_disk {
-    interface = "SCSI"
-  }
+ // scratch_disk {
+//    interface = "SCSI"
+ // }
 
   network_interface {
     network            = module.vpc.network_name

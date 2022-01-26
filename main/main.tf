@@ -19,8 +19,8 @@ module "subnets" {
 }
 
 resource "google_service_account" "default" {
-  account_id   = "service_account_id"
-  display_name = "Service Account"
+  account_id   = "dh-serviceaccount"
+  display_name = "DH Service Account"
 }
 
 resource "google_compute_instance" "default" {

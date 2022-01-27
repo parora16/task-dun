@@ -77,11 +77,13 @@ resource "google_storage_bucket" "buckset-dun" {
 data "google_iam_policy" "objectadmin" {
   binding {
     role = "roles/storage.objectAdmin"
-    serviceAccount = "user:dh-serviceaccount@terra-testjamess.iam.gserviceaccount.com"
+    members = [
+      "serviceAccount:dh-serviceaccount@terra-testjamess.iam.gserviceaccount.com",
+    ]
   }
 }
 
 resource "google_storage_bucket_iam_policy" "policy" {
-  bucket = google_storage_bucket.buckset-dun.name
+  bucket = google_storage_bucket.objectadmin.name
   policy_data = data.google_iam_policy.objectadmin.policy_data
 }

@@ -1,3 +1,5 @@
+##### VPC
+
 module "vpc" {
   source                                 = "../modules/vpc"
   network_name                           = var.network_name
@@ -9,6 +11,7 @@ module "vpc" {
   mtu                                    = var.mtu
 }
 
+##### subnets
 
 module "subnets" {
   source           = "../modules/subnet"
@@ -17,6 +20,8 @@ module "subnets" {
   subnets          = var.subnets
   secondary_ranges = var.secondary_ranges
 }
+
+##### VM instance 
 
 resource "google_service_account" "dh" {
   project      =  var.project_id
@@ -38,11 +43,6 @@ resource "google_compute_instance" "dh-datapipeline" {
     }
   }
 
-  // Local SSD disk
- // scratch_disk {
-//    interface = "SCSI"
- // }
-
   network_interface {
     network            = module.vpc.network_name
     subnetwork         = "dunnhumby-subnet"
@@ -60,4 +60,16 @@ resource "google_compute_instance" "dh-datapipeline" {
     email  = google_service_account.dh.email
     scopes = ["cloud-platform"]
   }
+}
+
+##### GCP Bucket
+
+
+resource "google_storage_bucket" "static-site" {
+  name          = "dunnhumby_prashant_arora"
+  location      = "US"
+  force_destroy = true
+  project       = var.project_id
+
+  uniform_bucket_level_access = true
 }

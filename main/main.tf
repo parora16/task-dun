@@ -85,6 +85,5 @@ data "google_iam_policy" "objectadmin" {
 
 resource "google_storage_bucket_iam_policy" "policy" {
   bucket      = google_storage_bucket.buckset-dun.name
-  project     = var.project_id
   policy_data = data.google_iam_policy.objectadmin.policy_data
 }

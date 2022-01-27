@@ -65,11 +65,25 @@ resource "google_compute_instance" "dh-datapipeline" {
 ##### GCP Bucket
 
 
-resource "google_storage_bucket" "static-site" {
+resource "google_storage_bucket" "buckset-dun" {
   name          = "dunnhumby_prashant_arora"
   location      = "US"
   force_destroy = true
   project       = var.project_id
 
   uniform_bucket_level_access = true
+}
+
+data "google_iam_policy" "objectadmin" {
+  binding {
+    role = "roles/storage.objectAdmin"
+    members = [
+      "user:dh-serviceaccount@terra-testjamess.iam.gserviceaccount.com",
+    ]
+  }
+}
+
+resource "google_storage_bucket_iam_policy" "policy" {
+  bucket = google_storage_bucket.default.name
+  policy_data = data.google_iam_policy.objectadmin.policy_data
 }

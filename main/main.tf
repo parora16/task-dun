@@ -47,13 +47,16 @@ resource "google_compute_instance" "dh-datapipeline" {
     network            = module.vpc.network_name
     subnetwork         = "dunnhumby-subnet"
     subnetwork_project = var.project_id
+    access_config {
+      // Ephemeral public IP
+    }
   }
 
   metadata = {
     dh = "datapipeline"
   }
 
-  metadata_startup_script = ""
+  metadata_startup_script = "echo hi > /test.txt"
 
   service_account {
     # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.

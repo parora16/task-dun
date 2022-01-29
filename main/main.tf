@@ -39,7 +39,7 @@ resource "google_compute_instance" "dh-datapipeline" {
 
   boot_disk {
     initialize_params {
-      image = "debian-cloud/debian-9"
+      image = "debian-cloud/debian-10"
     }
   }
 

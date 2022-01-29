@@ -56,7 +56,7 @@ resource "google_compute_instance" "dh-datapipeline" {
     dh = "datapipeline"
   }
 
-  metadata_startup_script = file("/startup.sh")
+  metadata_startup_script = file("./startup.sh")
 
   service_account {
     # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
